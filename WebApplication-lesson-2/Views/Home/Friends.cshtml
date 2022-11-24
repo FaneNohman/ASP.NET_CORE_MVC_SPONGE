@@ -1,0 +1,62 @@
+﻿@model IEnumerable<WebApplication_lesson_2.Models.Friend>
+
+@{
+    ViewData["Title"] = "Friends";
+}
+
+<h1>Friends</h1>
+<form asp-controller="Home" asp-action="Friends" method="get">
+    <input type="text" name="quearyString" />
+    <input type="submit" value="search"/>
+</form>
+<p>
+    <a asp-action="Create">Create New</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.FirstName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.LastName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Job)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.JobPlace)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.SkinColor)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.FirstName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.LastName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Job)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.JobPlace)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.SkinColor)
+            </td>
+            <td>
+                <a asp-action="Edit" asp-route-id="@item.FriendId">Edit</a> |
+                <a asp-action="Details" asp-route-id="@item.FriendId">Details</a> |
+                <a asp-action="Delete" asp-route-id="@item.FriendId">Delete</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>
